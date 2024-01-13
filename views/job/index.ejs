@@ -1,0 +1,61 @@
+<%-include('../layouts/head')%>
+  <%-include('../layouts/header') %>
+    <%-include('../layouts/navbar') %>
+
+      <script src="/assets/js/hs.theme-appearance.js"></script>
+      <script src="/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+
+      <main id="content" role="main" class="main">
+        <div class="content container-fluid">
+          <!-- Page Header -->
+          <!-- End Page Header -->
+          <!-- Card -->
+            <!-- Header -->
+         
+     <!-- End Footer -->
+     <div class="row align-items-center mt-4 mb-3">
+        <div class="col">
+          <h1 class="page-header-title">Tài liệu của bạn</h1>
+        </div>
+        <!-- End Col -->
+        <!-- End Col -->
+      </div>
+      
+      <ul class="list-group">
+        <!-- Item -->
+        <% var i =1; list.forEach(function(data) { %>
+        <li class="list-group-item">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <img class="avatar avatar-xs avatar-4x3" src="/assets/svg/brands/google-docs-icon.svg" alt="Image Description">
+            </div>
+
+            <div class="col">
+              <h5 class="mb-0">
+                <a class="text-dark" href="#"><%-data.title%></a>
+              </h5>
+              <ul class="list-inline list-separator small text-body">
+                <li class="list-inline-item"><%-data.createdAt%></li>
+                <li class="list-inline-item"><%-data.class.title%></li>
+              </ul>
+            </div>
+            <!-- End Col -->
+
+            <div class="col-auto">
+                <a href="<%-data.link%>" class="btn btn-white btn-sm" >Xem bài này</a>
+            </div>
+          </div>
+          <!-- End Row -->
+        </li>
+        <!-- End Item -->
+        <% }) %>
+
+
+        <!-- End Item -->
+      </ul>
+
+      </main>
+
+      <%-include('../layouts/footer')%>
+        <%-include('../layouts/script') %>
+          <%-include('../layouts/end')%>

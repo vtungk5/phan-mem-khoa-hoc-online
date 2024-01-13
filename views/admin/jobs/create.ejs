@@ -1,0 +1,82 @@
+<%-include('../../layouts/head')%> <%-include('../../layouts/header') %>
+<%-include('../../layouts/navbar') %>
+
+<script src="/assets/js/hs.theme-appearance.js"></script>
+<script src="/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <div class="card mb-5">
+      <form method="POST" action="/api/manager/jobs/create" data-ajax>
+        <div class="card-body">
+          <!-- Form -->
+          <div class="mb-4">
+            <label for="title" class="col-sm-3 col-form-label form-label"
+              >Tên tài liệu cần tạo</label
+            >
+            <div>
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                id="title"
+                placeholder="Vui lòng nhập tài liệu"
+                value=""
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="title" class="col-sm-3 col-form-label form-label"
+              >Đường dẫn tài liệu</label
+            >
+            <div>
+              <input
+                type="text"
+                class="form-control"
+                name="link"
+                id="link"
+                placeholder="Vui lòng nhập đường dẫn tài liệu"
+                value=""
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="title" class="col-sm-3 col-form-label form-label"
+              >Chọn lớp học</label
+            >
+            <div>
+              <select
+                class="js-select form-select"
+                autocomplete="off"
+                data-hs-tom-select-options='{
+                    "searchInDropdown": false,
+                    "width": "15rem",
+                    "hideSearch": true
+                  }'
+                  name="ClassID" 
+              >
+                <% list.forEach(function(data) { %>
+                <option value="<%-data._id;%>">
+                  <%-data.title%>
+                </option> 
+                <% }); %>
+              </select>
+            </div>
+          </div>
+          <!-- End Form -->
+
+          <!-- End Form -->
+          <button type="submit" class="btn fw-semibold btn-primary w-100">
+            TẠO TÀI LIỆU MỚI
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="pb-5 mb-5"></div>
+  </div>
+  <!-- End Content -->
+</main>
+
+<%-include('../../layouts/footer')%> <%-include('../../layouts/script') %>
+<%-include('../../layouts/end')%>

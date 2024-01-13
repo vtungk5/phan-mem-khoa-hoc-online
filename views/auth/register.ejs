@@ -1,0 +1,331 @@
+<%-include('../layouts/head')%>
+<script src="/assets/js/hs.theme-appearance.js"></script>
+<!-- ========== HEADER ========== -->
+<header class="position-absolute top-0 start-0 end-0 mt-3 mx-3">
+  <div class="d-flex d-lg-none justify-content-between">
+    <a href="/">
+      <img
+        class="w-100"
+        src="/assets/svg/logos/logo.svg"
+        alt="Image Description"
+        data-hs-theme-appearance="default"
+        style="min-width: 7rem; max-width: 7rem"
+      />
+      <img
+        class="w-100"
+        src="/assets/svg/logos-light/logo.svg"
+        alt="Image Description"
+        data-hs-theme-appearance="dark"
+        style="min-width: 7rem; max-width: 7rem"
+      />
+    </a>
+  </div>
+</header>
+<!-- ========== END HEADER ========== -->
+
+<main id="content" role="main" class="main pt-0">
+  <!-- Content -->
+  <div class="container-fluid px-3">
+    <div class="row">
+      <div
+        class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center min-vh-lg-100 position-relative bg-light px-0"
+      >
+        <!-- Logo & Language -->
+        <div class="position-absolute top-0 start-0 end-0 mt-3 mx-3">
+          <div class="d-none d-lg-flex justify-content-between">
+            <a href="/">
+              <img
+                class="w-100"
+                src="/assets/svg/logos/logo.svg"
+                alt="Image Description"
+                data-hs-theme-appearance="default"
+                style="min-width: 7rem; max-width: 7rem"
+              />
+              <img
+                class="w-100"
+                src="/assets/svg/logos-light/logo.svg"
+                alt="Image Description"
+                data-hs-theme-appearance="dark"
+                style="min-width: 7rem; max-width: 7rem"
+              />
+            </a>
+          </div>
+        </div>
+        <!-- End Logo & Language -->
+
+        <div style="max-width: 23rem">
+          <div class="text-center mb-5">
+            <img
+              class="img-fluid"
+              src="/assets/svg/illustrations/oc-chatting.svg"
+              alt="Image Description"
+              style="width: 12rem"
+              data-hs-theme-appearance="default"
+            />
+            <img
+              class="img-fluid"
+              src="/assets/svg/illustrations-light/oc-chatting.svg"
+              alt="Image Description"
+              style="width: 12rem"
+              data-hs-theme-appearance="dark"
+            />
+          </div>
+
+
+          <!-- End List Checked -->
+        </div>
+      </div>
+      <!-- End Col -->
+
+      <div
+        class="col-lg-6 d-flex justify-content-center align-items-center min-vh-lg-100"
+      >
+        <div
+          class="w-100 content-space-t-4 content-space-t-lg-2 content-space-b-1"
+          style="max-width: 25rem"
+        >
+          <!-- Form -->
+          <form class="js-validate needs-validation" novalidate>
+            <div class="text-center">
+              <div class="mb-5">
+                <h1 class="display-5">Tạo tài khoản</h1>
+                <p>
+                  Bạn đã có tài khoản?
+                  <a class="link" href="/auth/login">Đăng nhập tại đây</a>
+                </p>
+              </div>
+            </div>
+            <div id="notify"></div>
+
+            <label class="form-label" for="fullNameSrEmail">Họ và tên</label>
+
+            <div class="mb-4">
+              <input
+                type="text"
+                value="thanh"
+                class="form-control form-control-lg"
+                name="fullname"
+                id="fullNameSrEmail"
+                placeholder="Mark"
+                aria-label="Mark"
+                required
+              />
+              <span class="invalid-feedback"
+                >Please enter your first name.</span
+              >
+            </div>
+
+            <!-- End Form -->
+
+            <!-- Form -->
+            <div class="mb-4">
+              <label class="form-label" for="signupSrEmail">Địa chỉ email</label>
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                value="admin@gmail.com"
+                name="email"
+                id="signupSrEmail"
+                placeholder="Markwilliams@site.com"
+                aria-label="Markwilliams@site.com"
+                required
+              />
+              <span class="invalid-feedback"
+                >Please enter a valid email address.</span
+              >
+            </div>
+            <!-- End Form -->
+
+            <!-- Form -->
+            <div class="mb-4">
+              <label class="form-label" for="signupSrPassword">Mật khẩu</label>
+
+              <div
+                class="input-group input-group-merge"
+                data-hs-validation-validate-class
+              >
+                <input
+                  type="password"
+                  value="kimthuy95"
+                  class="js-toggle-password form-control form-control-lg"
+                  name="password"
+                  id="signupSrPassword"
+                  placeholder="8+ characters required"
+                  aria-label="8+ characters required"
+                  required
+                  minlength="8"
+                  data-hs-toggle-password-options='{
+                           "target": [".js-toggle-password-target-1", ".js-toggle-password-target-2"],
+                           "defaultClass": "bi-eye-slash",
+                           "showClass": "bi-eye",
+                           "classChangeTarget": ".js-toggle-password-show-icon-1"
+                         }'
+                />
+                <a
+                  class="js-toggle-password-target-1 input-group-append input-group-text"
+                  href="javascript:;"
+                >
+                  <i class="js-toggle-password-show-icon-1 bi-eye"></i>
+                </a>
+              </div>
+
+              <span class="invalid-feedback"
+                >Your password is invalid. Please try again.</span
+              >
+            </div>
+            <!-- End Form -->
+
+            <!-- Form -->
+            <div class="mb-4">
+              <label class="form-label" for="signupSrConfirmPassword"
+                >Xác nhận lại mật khẩu</label
+              >
+
+              <div
+                class="input-group input-group-merge"
+                data-hs-validation-validate-class
+              >
+                <input
+                  type="password"
+                  class="js-toggle-password form-control form-control-lg"
+                  value="kimthuy95"
+                  name="confirmPassword"
+                  id="signupSrConfirmPassword"
+                  placeholder="8+ characters required"
+                  aria-label="8+ characters required"
+                  required
+                  minlength="8"
+                  data-hs-toggle-password-options='{
+                           "target": [".js-toggle-password-target-1", ".js-toggle-password-target-2"],
+                           "defaultClass": "bi-eye-slash",
+                           "showClass": "bi-eye",
+                           "classChangeTarget": ".js-toggle-password-show-icon-2"
+                         }'
+                />
+                <a
+                  class="js-toggle-password-target-2 input-group-append input-group-text"
+                  href="javascript:;"
+                >
+                  <i class="js-toggle-password-show-icon-2 bi-eye"></i>
+                </a>
+              </div>
+
+              <span class="invalid-feedback"
+                >Password does not match the confirm password.</span
+              >
+            </div>
+            <!-- End Form -->
+
+            <div class="mb-4">
+              <label class="form-label" for="signupSrConfirmPassword"
+                >Loại tài khoản</label
+              >
+
+              <div class="input-group input-group-sm-vertical">
+                <!-- Radio Check -->
+                <label class="form-control" for="role1">
+                  <span class="form-check">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      name="role"
+                      id="role1"
+                      value="sv"
+                      checked=""
+                    />
+                    <span class="form-check-label">Học sinh</span>
+                  </span>
+                </label>
+                <!-- End Radio Check -->
+
+                <!-- Radio Check -->
+                <label class="form-control" for="role2">
+                  <span class="form-check">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      name="role"
+                      value="gv"
+                      id="role2"
+                    />
+                    <span class="form-check-label">Giáo viên</span>
+                  </span>
+                </label>
+                <!-- End Radio Check -->
+              </div>
+            </div>
+            <!-- Form Check -->
+            <div class="form-check mb-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="termsCheckbox"
+                id="termsCheckbox"
+                value="on"
+                required
+                checked
+              />
+              <label class="form-check-label" for="termsCheckbox">
+                I accept the <a href="#">Terms and Conditions</a>
+              </label>
+              <span class="invalid-feedback"
+                >Please accept our Terms and Conditions.</span
+              >
+            </div>
+            <!-- End Form Check -->
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Tạo tài khoản
+              </button>
+            </div>
+          </form>
+          <!-- End Form -->
+        </div>
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+  <!-- End Content -->
+</main>
+<!-- ========== END MAIN CONTENT ========== -->
+<%-include('../layouts/script') %>
+<script>
+  (function () {
+    window.onload = function () {
+      // INITIALIZATION OF BOOTSTRAP VALIDATION
+      // =======================================================
+      HSBsValidation.init(".js-validate", {
+        onSubmit: (data) => {
+          data.event.preventDefault();
+          $.ajax({
+            url: "/api/register",
+            type: "POST",
+            dataType: "json",
+            data: $("form").serialize(),
+            success: function (response) {
+              if (response.status === "success") {
+                console.log(response.message);
+                setInterval(function () {window.location.href = response.redirect;}, 700);
+              }
+              $("#notify").append(`<div class="alert ${response.status == "error" ? "alert-danger" : "alert-success"} alert-dismissible fade show" role="alert">${response.message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+            },
+            error: function (xhr, status, error) {
+              console.error("Error:", error);
+            },
+          });
+        },
+      });
+
+      // INITIALIZATION OF TOGGLE PASSWORD
+      // =======================================================
+      new HSTogglePassword(".js-toggle-password");
+
+      // INITIALIZATION OF SELECT
+      // =======================================================
+      HSCore.components.HSTomSelect.init(".js-select");
+    };
+  })();
+</script>
+<%-include('../layouts/end')%>

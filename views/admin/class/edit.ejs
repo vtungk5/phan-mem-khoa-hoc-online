@@ -1,0 +1,43 @@
+<%-include('../../layouts/head')%> <%-include('../../layouts/header') %>
+<%-include('../../layouts/navbar') %>
+
+<script src="/assets/js/hs.theme-appearance.js"></script>
+<script src="/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <div class="card mb-5">
+      <form method="POST" action="/api/manager/class/<%-data._id;%>/edit" data-ajax>
+        <div class="card-body">
+          <!-- Form -->
+          <div class=" mb-4">
+            <label for="title" class="col-sm-3 col-form-label form-label"
+              >Tên lớp</label
+            >
+
+            <div >
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                id="title"
+                placeholder="Vui lòng nhập tên lớp"
+                value="<%-data.title;%>"
+              />
+            </div>
+          </div>
+          <!-- End Form -->
+
+          <!-- End Form -->
+            <button type="submit" class="btn fw-semibold btn-primary w-100">Cập nhập LỚP HỌC</button>
+        </div>
+      </form>
+    </div>
+    <div class="pb-5 mb-5"></div>
+  </div>
+  <!-- End Content -->
+</main>
+
+<%-include('../../layouts/footer')%> <%-include('../../layouts/script') %>
+<%-include('../../layouts/end')%>

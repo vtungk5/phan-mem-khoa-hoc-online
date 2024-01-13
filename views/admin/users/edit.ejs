@@ -1,0 +1,141 @@
+<%-include('../../layouts/head')%> <%-include('../../layouts/header') %>
+<%-include('../../layouts/navbar') %>
+
+<script src="/assets/js/hs.theme-appearance.js"></script>
+<script src="/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <div class="card mb-5">
+      <form method="POST" action="/api/manager/account/<%-users._id;%>/edit" data-ajax>
+      <div class="card-body">
+        <!-- Form -->
+        <div class="row mb-4">
+          <label for="firstNameLabel" class="col-sm-3 col-form-label form-label"
+            >Full name
+            <i
+              class="bi-question-circle text-body ms-1"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              aria-label="Displayed on public forums, such as Front."
+              data-bs-original-title="Displayed on public forums, such as Front."
+            ></i
+          ></label>
+
+          <div class="col-sm-9">
+            <div class="input-group input-group-sm-vertical">
+              <input
+                type="text"
+                class="form-control"
+                name="fullname"
+                id="fullnameLabel"
+                placeholder="Clarice"
+                value="<%-users.fullname;%>"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- End Form -->
+
+        <!-- Form -->
+        <div class="row mb-4">
+          <label for="emailLabel" class="col-sm-3 col-form-label form-label"
+            >Email</label
+          >
+
+          <div class="col-sm-9">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="emailLabel"
+              placeholder="clarice@site.com"
+              aria-label="clarice@site.com"
+              value="<%-users.email;%>"
+
+            />
+          </div>
+        </div>
+        <!-- End Form -->
+
+        <!-- Form -->
+        <div class="row mb-4">
+          <label class="col-sm-3 col-form-label form-label"
+            >Loại tài khoản</label
+          >
+
+          <div class="col-sm-9">
+            <div class="input-group input-group-sm-vertical">
+              <!-- Radio Check -->
+              <label class="form-control" for="role1">
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="role"
+                  id="role1" value="sv" <%-users.role == 'sv' ? 'checked=""' :
+                  ''%> />
+                  <span class="form-check-label">Học sinh</span>
+                </span>
+              </label>
+              <!-- End Radio Check -->
+
+              <!-- Radio Check -->
+              <label class="form-control" for="role2">
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="role"
+                  value="gv" id="role2" <%-users.role == 'gv' ? 'checked=""' :
+                  ''%> />
+                  <span class="form-check-label">Giáo viên</span>
+                </span>
+              </label>
+              <!-- End Radio Check -->
+            </div>
+          </div>
+        </div>
+        <!-- End Form -->
+
+        <!-- Form -->
+        <div class="row mb-4">
+          <label class="col-sm-3 col-form-label form-label"
+            >Cấp bậc</label
+          >
+
+          <div class="col-sm-9">
+            <div class="input-group input-group-sm-vertical">
+              <!-- Radio Check -->
+              <label class="form-control" for="level1">
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="level"
+                  id="level1" value="user" <%-users.level == 'user' ? 'checked=""' :
+                  ''%> />
+                  <span class="form-check-label">Thành viên</span>
+                </span>
+              </label>
+              <!-- End Radio Check -->
+
+              <!-- Radio Check -->
+              <label class="form-control" for="level2">
+                <span class="form-check">
+                  <input type="radio" class="form-check-input" name="level"
+                  value="admin" id="level2" <%-users.level == 'admin' ? 'checked=""' :
+                  ''%> />
+                  <span class="form-check-label">Quản trị viên</span>
+                </span>
+              </label>
+              <!-- End Radio Check -->
+            </div>
+          </div>
+        </div>
+        <!-- End Form -->
+        <div class="card-footer mt-5 d-flex justify-content-end gap-3">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+      </form>
+    </div>
+    <div class="pb-5 mb-5"></div>
+  </div>
+  <!-- End Content -->
+</main>
+
+<%-include('../../layouts/footer')%> <%-include('../../layouts/script') %>
+<%-include('../../layouts/end')%>

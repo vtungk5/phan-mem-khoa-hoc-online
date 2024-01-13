@@ -1,0 +1,319 @@
+<%-include('../../layouts/head')%> <%-include('../../layouts/header') %>
+<%-include('../../layouts/navbar') %>
+
+<script src="/assets/js/hs.theme-appearance.js"></script>
+<script src="/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <div class="card">
+      <!-- Header -->
+      <div class="card-header card-header-content-md-between">
+        <div class="mb-2 mb-md-0">
+          <form>
+            <!-- Search -->
+            <div class="input-group input-group-merge input-group-flush">
+              <div class="input-group-prepend input-group-text">
+                <i class="bi-search"></i>
+              </div>
+              <input
+                id="datatableSearch"
+                type="search"
+                class="form-control"
+                placeholder="Tìm kiếm lớp học..."
+                aria-label="Tìm kiếm lớp học..."
+              />
+            </div>
+            <!-- End Search -->
+          </form>
+        </div>
+
+        <div
+          class="d-grid d-sm-flex justify-content-md-end align-items-sm-center gap-2"
+        >
+          <!-- Datatable Info -->
+          <div id="datatableCounterInfo" style="display: none">
+            <div class="d-flex align-items-center">
+              <span class="fs-5 me-3">
+                <span id="datatableCounter">0</span>
+                Selected
+              </span>
+              <a class="btn btn-outline-danger btn-sm" href="javascript:;">
+                <i class="bi-trash"></i> Delete
+              </a>
+            </div>
+          </div>
+          <!-- End Datatable Info -->
+
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <button
+              type="button"
+              class="btn btn-white btn-sm dropdown-toggle w-100"
+              id="usersExportDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi-download me-2"></i> Export
+            </button>
+
+            <div
+              class="dropdown-menu dropdown-menu-sm-end"
+              aria-labelledby="usersExportDropdown"
+            >
+              <span class="dropdown-header">Options</span>
+              <a id="export-copy" class="dropdown-item" href="javascript:;">
+                <img
+                  class="avatar avatar-xss avatar-4x3 me-2"
+                  src="/assets/svg/illustrations/copy-icon.svg"
+                  alt="Image Description"
+                />
+                Copy
+              </a>
+              <a id="export-print" class="dropdown-item" href="javascript:;">
+                <img
+                  class="avatar avatar-xss avatar-4x3 me-2"
+                  src="/assets/svg/illustrations/print-icon.svg"
+                  alt="Image Description"
+                />
+                Print
+              </a>
+              <div class="dropdown-divider"></div>
+              <span class="dropdown-header">Download options</span>
+              <a id="export-excel" class="dropdown-item" href="javascript:;">
+                <img
+                  class="avatar avatar-xss avatar-4x3 me-2"
+                  src="/assets/svg/brands/excel-icon.svg"
+                  alt="Image Description"
+                />
+                Excel
+              </a>
+              <a id="export-csv" class="dropdown-item" href="javascript:;">
+                <img
+                  class="avatar avatar-xss avatar-4x3 me-2"
+                  src="/assets/svg/components/placeholder-csv-format.svg"
+                  alt="Image Description"
+                />
+                .CSV
+              </a>
+              <a id="export-pdf" class="dropdown-item" href="javascript:;">
+                <img
+                  class="avatar avatar-xss avatar-4x3 me-2"
+                  src="/assets/svg/brands/pdf-icon.svg"
+                  alt="Image Description"
+                />
+                PDF
+              </a>
+            </div>
+          </div>
+          <!-- End Dropdown -->
+        </div>
+      </div>
+      <!-- End Header -->
+
+      <!-- Table -->
+      <div class="table-responsive datatable-custom position-relative">
+        <table
+          id="datatable"
+          class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
+          data-hs-datatables-options='{
+               "order": [],
+               "info": {
+                 "totalQty": "#datatableWithPaginationInfoTotalQty"
+               },
+               "search": "#datatableSearch",
+               "entries": "#datatableEntries",
+               "pageLength": 15,
+               "isResponsive": false,
+               "isShowPaging": false,
+               "pagination": "datatablePagination"
+             }'
+        >
+          <thead class="thead-light">
+            <tr>
+              <th>STT</th>
+              <th>Tên lớp học</th>
+              <th>Người tạo</th>
+              <th>Thành viên</th>
+              <th>Thời gian tạo</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% var i =1; list.forEach(function(data) { %>
+            <tr>
+              <td>
+                <a class="link" href="#"> <%-i++;%> </a>
+              </td>
+              <td><%-data.title%></td>
+              <td><%-data.author%></td>
+              <td><%-data.member%></td>
+              <td><%-data.createdAt%></td>
+              <td class="d-flex align-items-center">
+                <a
+                  type="button"
+                  class="btn btn-white btn-sm"
+                  href="/manager/class/<%-data._id%>/edit"
+                >
+                  Chỉnh sửa
+                </a>
+                <form method="GET" action="/api/manager/class/<%-data._id%>/delete" data-ajax>
+                <button
+                type="submit"
+                class="btn btn-danger btn-sm ms-2"
+              >
+                Xóa bỏ
+              </button>
+              </form>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <!-- End Table -->
+    </div>
+    <!-- End Row -->
+
+    <!-- Footer -->
+    <div class="card-footer">
+      <!-- Pagination -->
+      <div
+        class="row justify-content-center justify-content-sm-between align-items-sm-center"
+      >
+        <div class="col-sm mb-2 mb-sm-0">
+          <div
+            class="d-flex justify-content-center justify-content-sm-start align-items-center"
+          >
+            <span class="me-2">Showing:</span>
+
+            <!-- Select -->
+            <div class="tom-select-custom">
+              <select
+                id="datatableEntries"
+                class="js-select form-select form-select-borderless w-auto"
+                autocomplete="off"
+                data-hs-tom-select-options='{
+                "searchInDropdown": false,
+                "hideSearch": true
+              }'
+              >
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8" selected>8</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+            <!-- End Select -->
+
+            <span class="text-secondary me-2">of</span>
+
+            <!-- Pagination Quantity -->
+            <span id="datatableEntriesInfoTotalQty"></span>
+          </div>
+        </div>
+
+        <div class="col-sm-auto">
+          <div class="d-flex justify-content-center justify-content-sm-end">
+            <!-- Pagination -->
+            <nav
+              id="datatableEntriesPagination"
+              aria-label="Activity pagination"
+            ></nav>
+          </div>
+        </div>
+      </div>
+      <!-- End Pagination -->
+    </div>
+    <!-- End Footer -->
+  </div>
+  <!-- End Content -->
+
+  <!-- Footer -->
+
+
+  <!-- End Footer -->
+</main>
+
+<%-include('../../layouts/footer')%> <%-include('../../layouts/script') %>
+<script>
+  $(document).on("ready", function () {
+    // INITIALIZATION OF DATATABLES
+    // =======================================================
+    HSCore.components.HSDatatables.init($("#datatable"), {
+      dom: "Bfrtip",
+      buttons: [
+        {
+          extend: "copy",
+          className: "d-none",
+        },
+        {
+          extend: "excel",
+          className: "d-none",
+        },
+        {
+          extend: "csv",
+          className: "d-none",
+        },
+        {
+          extend: "pdf",
+          className: "d-none",
+        },
+        {
+          extend: "print",
+          className: "d-none",
+        },
+      ],
+      select: {
+        style: "multi",
+        selector: 'td:first-child input[type="checkbox"]',
+        classMap: {
+          checkAll: "#datatableCheckAll",
+          counter: "#datatableCounter",
+          counterInfo: "#datatableCounterInfo",
+        },
+      },
+      language: {
+        zeroRecords: `<div class="text-center p-4">
+      <img class="mb-3" src="/assets/svg/illustrations/oc-error.svg" alt="Image Description" style="width: 10rem;" data-hs-theme-appearance="default">
+      <img class="mb-3" src="/assets/svg/illustrations-light/oc-error.svg" alt="Image Description" style="width: 10rem;" data-hs-theme-appearance="dark">
+    <p class="mb-0">Không tìm thấy sinh viên nào</p>
+    </div>`,
+      },
+    });
+
+    const datatable = HSCore.components.HSDatatables.getItem(0);
+
+    $("#export-copy").click(function () {
+      datatable.button(".buttons-copy").trigger();
+    });
+
+    $("#export-excel").click(function () {
+      datatable.button(".buttons-excel").trigger();
+    });
+
+    $("#export-csv").click(function () {
+      datatable.button(".buttons-csv").trigger();
+    });
+
+    $("#export-pdf").click(function () {
+      datatable.button(".buttons-pdf").trigger();
+    });
+
+    $("#export-print").click(function () {
+      datatable.button(".buttons-print").trigger();
+    });
+
+    $(".js-datatable-filter").on("change", function () {
+      var $this = $(this),
+        elVal = $this.val(),
+        targetColumnIndex = $this.data("target-column-index");
+
+      if (elVal === "null") elVal = "";
+
+      datatable.column(targetColumnIndex).search(elVal).draw();
+    });
+  });
+</script>
+<%-include('../../layouts/end')%>

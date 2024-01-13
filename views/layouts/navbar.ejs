@@ -1,0 +1,139 @@
+<!-- Navbar Vertical -->
+
+<aside
+    class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered bg-white  ">
+    <div class="navbar-vertical-container">
+        <div class="navbar-vertical-footer-offset">
+            <!-- Logo -->
+
+            <a class="navbar-brand" href="/" aria-label="Front">
+                <img class="navbar-brand-logo" src="/assets/svg/logos/logo.svg" alt="Logo"
+                    data-hs-theme-appearance="default">
+                <img class="navbar-brand-logo" src="/assets/svg/logos-light/logo.svg" alt="Logo"
+                    data-hs-theme-appearance="dark">
+                <img class="navbar-brand-logo-mini" src="/assets/svg/logos/logo-short.svg" alt="Logo"
+                    data-hs-theme-appearance="default">
+                <img class="navbar-brand-logo-mini" src="/assets/svg/logos-light/logo-short.svg" alt="Logo"
+                    data-hs-theme-appearance="dark">
+            </a>
+
+            <!-- End Logo -->
+
+            <!-- Navbar Vertical Toggle -->
+            <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler">
+                <i class="bi-arrow-bar-left navbar-toggler-short-align"
+                    data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+                    data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse"></i>
+                <i class="bi-arrow-bar-right navbar-toggler-full-align"
+                    data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+                    data-bs-toggle="tooltip" data-bs-placement="right" title="Expand"></i>
+            </button>
+
+            <!-- End Navbar Vertical Toggle -->
+
+            <!-- Content -->
+            <div class="navbar-vertical-content">
+                <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
+                    <!-- Collapse -->
+                    <div class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="bi-house-door nav-icon"></i>
+                            <span class="nav-link-title">Bảng điều khiển</span>
+                        </a>
+                    </div>
+                    <!-- End Collapse -->
+
+                    <span class="dropdown-header mt-4">Danh mục</span>
+                    <small class="bi-three-dots nav-subtitle-replacer"></small>
+                    <div id="danhmuc">
+                        <!-- Collapse -->
+                        <div class="nav-item">
+                            <a class="nav-link " href="/account/class/add">
+                                <i class="bi-people nav-icon"></i>
+                                <span class="nav-link-title">Tham gia lớp học</span>
+                            </a>
+                        </div>    
+                        <!-- End Collapse -->
+                        <div class="nav-item">
+                            <a class="nav-link " href="/account/class">
+                                <i class="bi-stickies nav-icon"></i>
+                                <span class="nav-link-title">Lớp học của bạn</span>
+                            </a>
+                        </div>
+
+                    
+                    </div>
+
+                    <span class="dropdown-header mt-4">Chức năng</span>
+                    <small class="bi-three-dots nav-subtitle-replacer"></small>
+
+
+                    <div id="navbarVerticalMenuPagesMenu">
+                        <!-- Collapse -->
+                        <%  if(user.level == 'admin'){ %>
+                        <div class="nav-item">
+                            <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesUsersMenu" role="button"
+                                data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesUsersMenu"
+                                aria-expanded="false" aria-controls="navbarVerticalMenuPagesUsersMenu">
+                                <i class="bi-people nav-icon"></i>
+                                <span class="nav-link-title">Người dùng</span>
+                            </a>
+
+                            <div id="navbarVerticalMenuPagesUsersMenu" class="nav-collapse collapse "
+                                data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                <a class="nav-link " href="/manager/account/student">Quản lý sinh viên</a>
+                                <a class="nav-link " href="/manager/account/teacher">Quản lý đội ngũ</a>
+                            </div>
+                        </div>
+                        <% } %>
+                        <!-- End Collapse -->
+
+                        <!-- Collapse -->
+                        <div class="nav-item">
+                            <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesProjectsMenu"
+                                role="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarVerticalMenuPagesProjectsMenu" aria-expanded="false"
+                                aria-controls="navbarVerticalMenuPagesProjectsMenu">
+                                <i class="bi-stickies nav-icon"></i>
+                                <span class="nav-link-title">Tài liệu</span>
+                            </a>
+
+                            <div id="navbarVerticalMenuPagesProjectsMenu" class="nav-collapse collapse "
+                                data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                <a class="nav-link " href="/manager/jobs/list">Danh sách</a>
+                                <a class="nav-link " href="/manager/jobs/create">Tạo Tài liệu</a>
+                            </div>
+                        </div>
+                        <!-- End Collapse -->
+
+                        <!-- Collapse -->
+                        <div class="nav-item">
+                            <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesProjectMenu"
+                                role="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarVerticalMenuPagesProjectMenu" aria-expanded="false"
+                                aria-controls="navbarVerticalMenuPagesProjectMenu">
+                                <i class="bi-briefcase nav-icon"></i>
+                                <span class="nav-link-title">Lớp học</span>
+                            </a>
+
+                            <div id="navbarVerticalMenuPagesProjectMenu" class="nav-collapse collapse "
+                                data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                <a class="nav-link " href="/manager/class/list">Danh sách lớp học</a>
+                                <a class="nav-link " href="/manager/class/create">Tạo lớp học mới</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- End Collapse -->
+
+
+                </div>
+                <!-- End Content -->
+
+
+            </div>
+        </div>
+</aside>
+
+<!-- End Navbar Vertical -->

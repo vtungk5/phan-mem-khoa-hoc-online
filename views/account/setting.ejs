@@ -1,0 +1,419 @@
+<%-include('../layouts/head')%> <%-include('../layouts/header') %>
+<%-include('../layouts/navbar') %>
+
+<script src="/assets/js/hs.theme-appearance.js"></script>
+<script src="/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+ 
+    <div class="row">
+      <div class="col-lg-3">
+        <!-- Navbar -->
+        <div class="navbar-expand-lg navbar-vertical mb-3 mb-lg-5">
+          <!-- Navbar Toggle -->
+          <!-- Navbar Toggle -->
+          <div class="d-grid">
+            <button
+              type="button"
+              class="navbar-toggler btn btn-white mb-3"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarVerticalNavMenu"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+              aria-controls="navbarVerticalNavMenu"
+            >
+              <span class="d-flex justify-content-between align-items-center">
+                <span class="text-dark">Menu</span>
+
+                <span class="navbar-toggler-default">
+                  <i class="bi-list"></i>
+                </span>
+
+                <span class="navbar-toggler-toggled">
+                  <i class="bi-x"></i>
+                </span>
+              </span>
+            </button>
+          </div>
+          <!-- End Navbar Toggle -->
+          <!-- End Navbar Toggle -->
+
+          <!-- Navbar Collapse -->
+          <div id="navbarVerticalNavMenu" class="collapse navbar-collapse">
+            <ul
+              id="navbarSettings"
+              class="js-sticky-block js-scrollspy card card-navbar-nav nav nav-tabs nav-lg nav-vertical"
+              data-hs-sticky-block-options='{
+                         "parentSelector": "#navbarVerticalNavMenu",
+                         "targetSelector": "#header",
+                         "breakpoint": "lg",
+                         "startPoint": "#navbarVerticalNavMenu",
+                         "endPoint": "#stickyBlockEndPoint",
+                         "stickyOffsetTop": 20
+                       }'
+            >
+              <li class="nav-item">
+                <a class="nav-link active" href="#content">
+                  <i class="bi-person nav-icon"></i> Basic information
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#passwordSection">
+                  <i class="bi-key nav-icon"></i> Password
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- End Navbar Collapse -->
+        </div>
+        <!-- End Navbar -->
+      </div>
+
+      <div class="col-lg-9">
+        <div class="d-grid gap-3 gap-lg-5">
+          <!-- Card -->
+          <div class="card">
+            <!-- Profile Cover -->
+            <div class="profile-cover">
+              <div class="profile-cover-img-wrapper">
+                <img
+                  id="profileCoverImg"
+                  class="profile-cover-img"
+                  src="/assets/img/1920x400/img2.jpg"
+                  alt="Image Description"
+                />
+
+
+                <!-- End Custom File Cover -->
+              </div>
+            </div>
+            <!-- End Profile Cover -->
+
+            <!-- Avatar -->
+            <label
+              class="avatar avatar-xxl avatar-circle avatar-uploader profile-cover-avatar"
+              for="editAvatarUploaderModal"
+            >
+              <img
+                id="editAvatarImgModal"
+                class="avatar-img"
+                src="/assets/img/160x160/img6.jpg"
+                alt="Image Description"
+              />
+
+            </label>
+            <!-- End Avatar -->
+
+        
+            <!-- End Body -->
+          </div>
+          <!-- End Card -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title h4">Thông tin cơ bản</h2>
+            </div>
+
+            <!-- Body -->
+            <div class="card-body">
+              <!-- Form -->
+              <form method="POST" action="/api/account/change-info" data-ajax>
+                <!-- Form -->
+                <div class="row mb-4">
+                  <label for="firstNameLabel" class="col-sm-3 col-form-label form-label">Họ và tên <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Displayed on public forums, such as Front." data-bs-original-title="Displayed on public forums, such as Front."></i></label>
+
+                  <div class="col-sm-9">
+                    <div class="input-group input-group-sm-vertical">
+                      <input type="text" class="form-control" name="fullname" id="firstNameLabel" placeholder="Your first name" aria-label="Your first name" value="<%-user.fullname;%>">
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Form -->
+                <div id="accountType" class="row mb-4">
+                  <label class="col-sm-3 col-form-label form-label">Loại tài khoản</label>
+
+                  <div class="col-sm-9">
+                    <div class="input-group input-group-sm-vertical">
+                      <!-- Radio Check -->
+                      <label class="form-control" for="role1">
+                        <span class="form-check">
+                          <input
+                            type="radio"
+                            class="form-check-input"
+                            name="role"
+                            id="role1"
+                            value="sv"
+                            <%-user.role == 'sv' ? 'checked=""' : ''%>
+                          />
+                          <span class="form-check-label">Học sinh</span>
+                        </span>
+                      </label>
+                      <!-- End Radio Check -->
+      
+                      <!-- Radio Check -->
+                      <label class="form-control" for="role2">
+                        <span class="form-check">
+                          <input
+                            type="radio"
+                            class="form-check-input"
+                            name="role"
+                            value="gv"
+                            id="role2"
+                            <%-user.role == 'gv' ? 'checked=""' : ''%>
+                          />
+                          <span class="form-check-label">Giáo viên</span>
+                        </span>
+                      </label>
+                      <!-- End Radio Check -->
+                    </div>
+                  </div>
+                </div>
+                <!-- End Form -->
+
+                <!-- Form -->
+                
+                <!-- End Form -->
+
+                <!-- Form -->
+                
+                <!-- End Form -->
+
+                <!-- Form -->
+                
+                <!-- End Form -->
+
+                <!-- Form -->
+                
+                <!-- End Form -->
+
+                <!-- Form -->
+                
+                <!-- End Form -->
+
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="btn btn-primary">Cập nhập</button>
+                </div>
+              </form>
+              <!-- End Form -->
+            </div>
+            <!-- End Body -->
+          </div>
+
+
+          <!-- Card -->
+          <div id="passwordSection" class="card">
+            <div class="card-header">
+              <h4 class="card-title">Đổi mật khẩu</h4>
+            </div>
+
+            <!-- Body -->
+            <div class="card-body">
+              <!-- Form -->
+              <form id="changePasswordForm" action="/api/account/change-password" method="post" data-ajax>
+                <!-- Form -->
+                <div class="row mb-4">
+                  <label
+                    for="currentPasswordLabel"
+                    class="col-sm-3 col-form-label form-label"
+                    >Mật khẩu cũ</label
+                  >
+
+                  <div class="col-sm-9">
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="currentPassword"
+                      id="currentPasswordLabel"
+                      placeholder="Enter current password"
+                      aria-label="Enter current password"
+                    />
+                  </div>
+                </div>
+                <!-- End Form -->
+
+                <!-- Form -->
+                <div class="row mb-4">
+                  <label
+                    for="newPassword"
+                    class="col-sm-3 col-form-label form-label"
+                    >Mật khẩu mới</label
+                  >
+
+                  <div class="col-sm-9">
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="newPassword"
+                      id="newPassword"
+                      placeholder="Enter new password"
+                      aria-label="Enter new password"
+                    />
+                  </div>
+                </div>
+                <!-- End Form -->
+
+                <!-- Form -->
+                <div class="row mb-4">
+                  <label
+                    for="confirmNewPasswordLabel"
+                    class="col-sm-3 col-form-label form-label"
+                    >Nhập lại mật khẩu mới</label
+                  >
+
+                  <div class="col-sm-9">
+                    <div class="mb-3">
+                      <input
+                        type="password"
+                        class="form-control"
+                        name="confirmNewPassword"
+                        id="confirmNewPasswordLabel"
+                        placeholder="Confirm your new password"
+                        aria-label="Confirm your new password"
+                      />
+                    </div>
+                    <h5>Gợi ý bảo mật cho mật khẩu của bạn:</h5>
+
+                    <p class="fs-6 mb-2">
+                      Đảm bảo đáp ứng các yêu cầu sau:
+                    </p>
+
+                    <ul class="fs-6">
+                      <li>Dài tối thiểu 8 ký tự - càng nhiều càng tốt</li>
+                      <li>Ít nhất một ký tự chữ thường</li>
+                      <li>Ít nhất một ký tự viết hoa</li>
+                      <li>
+                        Ít nhất một số, ký hiệu hoặc ký tự khoảng trắng
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- End Form -->
+
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="btn btn-primary">
+                    Thay dổi
+                  </button>
+                </div>
+              </form>
+              <!-- End Form -->
+            </div>
+            <!-- End Body -->
+          </div>
+          <!-- End Card -->
+
+        </div>
+
+        <!-- Sticky Block End Point -->
+        <div id="stickyBlockEndPoint"></div>
+      </div>
+    </div>
+    <!-- End Row -->
+  </div>
+  <!-- End Content -->
+
+  <!-- Footer -->
+
+  <div class="footer">
+    <div class="row justify-content-between align-items-center">
+      <div class="col">
+        <p class="fs-6 mb-0">
+          &copy; Front.
+          <span class="d-none d-sm-inline-block">2022 Htmlstream.</span>
+        </p>
+      </div>
+      <!-- End Col -->
+
+      <div class="col-auto">
+        <div class="d-flex justify-content-end">
+          <!-- List Separator -->
+          <ul class="list-inline list-separator">
+            <li class="list-inline-item">
+              <a class="list-separator-link" href="#">FAQ</a>
+            </li>
+
+            <li class="list-inline-item">
+              <a class="list-separator-link" href="#">License</a>
+            </li>
+
+            <li class="list-inline-item">
+              <!-- Keyboard Shortcuts Toggle -->
+              <button
+                class="btn btn-ghost-secondary btn btn-icon btn-ghost-secondary rounded-circle"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasKeyboardShortcuts"
+                aria-controls="offcanvasKeyboardShortcuts"
+              >
+                <i class="bi-command"></i>
+              </button>
+              <!-- End Keyboard Shortcuts Toggle -->
+            </li>
+          </ul>
+          <!-- End List Separator -->
+        </div>
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+
+  <!-- End Footer -->
+</main>
+
+<%-include('../layouts/footer')%> 
+<%-include('../layouts/script') %>
+<!-- JS Plugins Init. -->
+<script>
+  (function () {
+    window.onload = function () {
+      // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+      // =======================================================
+      new HSSideNav(".js-navbar-vertical-aside").init();
+
+      // INITIALIZATION OF FORM SEARCH
+      // =======================================================
+      new HSFormSearch(".js-form-search");
+
+      // INITIALIZATION OF BOOTSTRAP DROPDOWN
+      // =======================================================
+      HSBsDropdown.init();
+
+      // INITIALIZATION OF SELECT
+      // =======================================================
+      HSCore.components.HSTomSelect.init(".js-select");
+
+      // INITIALIZATION OF INPUT MASK
+      // =======================================================
+      HSCore.components.HSMask.init(".js-input-mask");
+
+      // INITIALIZATION OF FILE ATTACHMENT
+      // =======================================================
+      new HSFileAttach(".js-file-attach");
+
+      // INITIALIZATION OF STICKY BLOCKS
+      // =======================================================
+      new HSStickyBlock(".js-sticky-block", {
+        targetSelector: document
+          .getElementById("header")
+          .classList.contains("navbar-fixed")
+          ? "#header"
+          : null,
+      });
+
+      // SCROLLSPY
+      // =======================================================
+      new bootstrap.ScrollSpy(document.body, {
+        target: "#navbarSettings",
+        offset: 100,
+      });
+
+      new HSScrollspy("#navbarVerticalNavMenu", {
+        breakpoint: "lg",
+        scrollOffset: -20,
+      });
+    };
+  })();
+</script>
+<%-include('../layouts/end')%>

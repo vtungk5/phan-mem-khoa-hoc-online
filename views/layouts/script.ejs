@@ -1,0 +1,163 @@
+<!-- End Create a new user Modal -->
+<!-- ========== END SECONDARY CONTENTS ========== -->
+
+<!-- JS Implementing Plugins -->
+<script src="/assets/js/vendor.min.js"></script>
+
+<!-- JS Front -->
+<script src="/assets/js/theme.min.js"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+  function noti(status, message) {
+    Swal.fire({
+      icon: status,
+      text: message,
+    });
+  }
+
+  function CurlHttp(url, method = "GET", data = null) {
+    $.ajax({
+      url: url,
+      data: data,
+      type: method,
+      dataType: "json",
+      statusCode: {
+        500: function () {
+          noti(500, "500 status code! server error");
+        },
+      },
+      success: (data) => {
+        if (!data) {
+          noti("error", "Không thể nhận dữ liệu về từ api này");
+        } else {
+          if (!data.redirect && data.redirect === undefined) {
+            noti(data.status, data.message);
+          } else {
+            if (data.status == "success") {
+              setInterval(() => {
+                window.location.href = data.redirect;
+              }, 700);
+            }
+            noti(data.status, data.message);
+          }
+        }
+      },
+      error: function (request) {
+        var obj = JSON.parse(request.responseText);
+        if (!obj) {
+          noti("error", "Không thể nhận dữ liệu về từ api này");
+        } else {
+          if (!obj.redirect && obj.redirect === undefined) {
+            noti(obj.status, obj.message);
+          } else {
+            if (obj.status == "success") {
+              setInterval(() => {
+                window.location.href = obj.redirect;
+              }, 700);
+            }
+            noti(obj.status, obj.message);
+          }
+        }
+      },
+    });
+  }
+
+  $("form[data-ajax]").submit(function (e) {
+    e.preventDefault();
+    CurlHttp(
+      $(this).attr("action"),
+      $(this).attr("method"),
+      $(this).serialize()
+    );
+  });
+
+  $(document).ready(function () {
+    console.log( $(`.nav-link[href="${window.location.pathname}"]`).parent().prev())
+    $(`.nav-link[href="${window.location.pathname}"]`).parent().addClass("show").prev().toggleClass("open");
+  });
+  $(`.nav-link[href="${window.location.pathname}"]`).addClass("active");
+
+  (function () {
+    localStorage.removeItem("hs_theme");
+
+    window.onload = function () {
+      // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+      // =======================================================
+      new HSSideNav(".js-navbar-vertical-aside").init();
+
+      // INITIALIZATION OF FORM SEARCH
+      // =======================================================
+      const HSFormSearchInstance = new HSFormSearch(".js-form-search");
+
+      if (HSFormSearchInstance.collection.length) {
+        HSFormSearchInstance.getItem(1).on("close", function (el) {
+          el.classList.remove("top-0");
+        });
+
+        document
+          .querySelector(".js-form-search-mobile-toggle")
+          .addEventListener("click", (e) => {
+            let dataOptions = JSON.parse(
+                e.currentTarget.getAttribute("data-hs-form-search-options")
+              ),
+              $menu = document.querySelector(dataOptions.dropMenuElement);
+
+            $menu.classList.add("top-0");
+            $menu.style.left = 0;
+          });
+      }
+
+      // INITIALIZATION OF BOOTSTRAP DROPDOWN
+      // =======================================================
+      HSBsDropdown.init();
+    };
+  })();
+</script>
+
+<!-- Style Switcher JS -->
+
+<script>
+  (function () {
+    // STYLE SWITCHER
+    // =======================================================
+    const $dropdownBtn = document.getElementById("selectThemeDropdown"); // Dropdowon trigger
+    const $variants = document.querySelectorAll(
+      `[aria-labelledby="selectThemeDropdown"] [data-icon]`
+    ); // All items of the dropdown
+
+    // Function to set active style in the dorpdown menu and set icon for dropdown trigger
+    const setActiveStyle = function () {
+      $variants.forEach(($item) => {
+        if (
+          $item.getAttribute("data-value") ===
+          HSThemeAppearance.getOriginalAppearance()
+        ) {
+          $dropdownBtn.innerHTML = `<i class="${$item.getAttribute(
+            "data-icon"
+          )}" />`;
+          return $item.classList.add("active");
+        }
+
+        $item.classList.remove("active");
+      });
+    };
+
+    // Add a click event to all items of the dropdown to set the style
+    $variants.forEach(function ($item) {
+      $item.addEventListener("click", function () {
+        HSThemeAppearance.setAppearance($item.getAttribute("data-value"));
+      });
+    });
+
+    // Call the setActiveStyle on load page
+    setActiveStyle();
+
+    // Add event listener on change style to call the setActiveStyle function
+    window.addEventListener("on-hs-appearance-change", function () {
+      setActiveStyle();
+    });
+  })();
+</script>
+
+<!-- End Style Switcher JS -->
