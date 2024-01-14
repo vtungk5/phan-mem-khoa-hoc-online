@@ -8,7 +8,7 @@ const Login = async (req, res, next) => {
     if (token) {
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
-      const user = await User.findOne({ userID: decoded._id });
+      const user = await User.findOne({ _id: decoded.userID });
       if (user) {
         res.redirect("/");
       }else{

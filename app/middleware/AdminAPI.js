@@ -1,30 +1,43 @@
 import jwt from "jsonwebtoken";
 import User from "../model/User.js";
 
-const AdminAPI = async (req, res, next) => {
+const Admin = async (req, res, next) => {
   try {
     const token = req.cookies.token;
 
     if (token) {
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
-      const user = await User.findOne({ userID: decoded._id });
+      const user = await User.findOne({ _id: decoded.userID });
+
       if (user) {
         if (user.level == "admin") {
           req.user = user;
           next();
         } else {
-          res.redirect("/");
+          return res.json({
+            status: "error",
+            message: "Bạn không có thẩm quyền",
+          });
         }
       } else {
-        res.redirect("/auth/login");
+        return res.json({
+          status: "error",
+          message: "Người dùng không tồn tại",
+        });
       }
     } else {
-      res.redirect("/auth/login");
+      return res.json({
+        status: "error",
+        message: "Người dùng không tồn tại",
+      });
     }
   } catch (error) {
-    res.redirect("/auth/login");
+    return res.json({
+      status: "error",
+      message: "Người dùng không tồn tại",
+    });
   }
 };
 
-module.exports = AdminAPI;
+module.exports = Admin;
